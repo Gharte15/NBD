@@ -1,0 +1,2 @@
+# NBD
+Nierelacyjne Bazy Danych
