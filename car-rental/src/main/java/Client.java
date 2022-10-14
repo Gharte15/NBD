@@ -1,3 +1,6 @@
+import jakarta.validation.Valid;
+
+@Valid
 public class Client {
     private String firstName;
     private String lastName;

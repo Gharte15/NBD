@@ -1,4 +1,8 @@
-import com.sun.security.jgss.GSSUtil;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
+import org.hibernate.mapping.Set;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -18,6 +22,11 @@ public class Main {
         System.out.println(r.getRentInfo());
         System.out.println("--------------------------");
         System.out.println(r.getRentCost());
+
+        // ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        // Validator validator = factory.getValidator();
+        // Set violations = (Set) validator.validate(c);
+        // assertThat(violations, hasSize(0));
 
 
     }
