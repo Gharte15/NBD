@@ -1,11 +1,25 @@
+package Entities;
+
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+
+@Entity
+@Access(AccessType.FIELD)
+@DiscriminatorValue("game")
 public class Game extends Item {
     protected String platform;
-    protected ageCategory category;
+    protected AgeCategory category;
 
-    public Game(String creator, String releaseDate, String genre, double basePrice, String title, int id, String platform, ageCategory category) {
+    public Game(String creator, String releaseDate, String genre, double basePrice, String title, int id, String platform, AgeCategory category) {
         super(creator, releaseDate, genre, basePrice, title, id);
         this.platform = platform;
         this.category = category;
+    }
+
+    public Game() {
+
     }
 
     public String getPlatform() {
@@ -16,11 +30,11 @@ public class Game extends Item {
         this.platform = platform;
     }
 
-    public ageCategory getCategory() {
+    public AgeCategory getCategory() {
         return category;
     }
 
-    public void setCategory(ageCategory category) {
+    public void setCategory(AgeCategory category) {
         this.category = category;
     }
 
@@ -33,6 +47,6 @@ public class Game extends Item {
 
     @Override
     public boolean isOnlyForAdults() {
-        return this.getCategory() == ageCategory.B;
+        return this.getCategory() == AgeCategory.B;
     }
 }

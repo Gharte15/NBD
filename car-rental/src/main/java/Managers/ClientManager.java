@@ -1,6 +1,8 @@
+import Entities.Client;
+import Repositories.ClientRepository;
+
 public class ClientManager {
     private ClientRepository clientRepository;
-
     Client getClient(String personalId) {
         return clientRepository.findByPersonalId(personalId);
     }

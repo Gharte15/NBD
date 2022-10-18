@@ -1,11 +1,10 @@
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validation;
-import jakarta.validation.Validator;
-import jakarta.validation.ValidatorFactory;
-import org.hibernate.mapping.Set;
+package Model;
+
+import Managers.ClientManager;
+import Managers.ItemManager;
+import Managers.RentManager;
 
 import java.time.LocalDateTime;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,7 +13,7 @@ public class Main {
         ItemManager itemManager = new ItemManager();
         ClientType premium = new Premium();
         Client c = new Client("Mariusz", "Pudzianowski", "2137", 49, premium, null);
-        Item f = new Film("TEST", "TEST", "TEST", 20, "TEST", 1, "TEST", ageCategory.A);
+        Item f = new Film("TEST", "TEST", "TEST", 20, "TEST", 1, "TEST", AgeCategory.A);
         Rent r = rentManager.rentItem(c, f, LocalDateTime.now());
         System.out.println(rentManager.getItemRent(f).getRentInfo());
         System.out.println("--------------------------");

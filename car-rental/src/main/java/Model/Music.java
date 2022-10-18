@@ -1,3 +1,10 @@
+package Entities;
+
+import jakarta.persistence.*;
+
+@Entity
+@Access(AccessType.FIELD)
+@DiscriminatorValue("music")
 public class Music extends Item {
     private String album;
     private String duration;
@@ -6,6 +13,10 @@ public class Music extends Item {
         super(creator, releaseDate, genre, basePrice, title, id);
         this.album = album;
         this.duration = duration;
+    }
+
+    public Music() {
+
     }
 
     public String getAlbum() {

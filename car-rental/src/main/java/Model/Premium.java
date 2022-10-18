@@ -1,3 +1,11 @@
+package Entities;
+
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Embeddable;
+
+@Embeddable
+@Access(AccessType.FIELD)
 public class Premium extends ClientType {
     @Override
     int getMaxItems() {

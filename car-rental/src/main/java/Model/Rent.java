@@ -1,14 +1,44 @@
+package Entities;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import org.dom4j.tree.AbstractEntity;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-public class Rent {
+@Access(AccessType.FIELD)
+@Entity
+public class Rent extends AbstractEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long rentID;
+
+    @ManyToOne
+    @JoinColumn
+    @NotNull
     private Client client;
+
+    @ManyToOne
+    @JoinColumn
+    @NotNull
     private Item item;
+
     private int id;
     private double rentCost = 0;
     private LocalDateTime beginTime;
     private LocalDateTime endTime;
+
+    public Rent() {
+    }
+
+    public Long getRentID() {
+        return rentID;
+    }
+
+    public void setRentID(Long rentID) {
+        this.rentID = rentID;
+    }
 
     public Rent(Client client, Item item, int id) {
         this.client = client;

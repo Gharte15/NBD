@@ -1,3 +1,13 @@
+package Entities;
+
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+
+// @Entity
+@Embeddable
+@Access(AccessType.FIELD)
 public class Address {
     private String city;
     private String street;
@@ -7,6 +17,10 @@ public class Address {
         this.city = city;
         this.street = street;
         this.number = number;
+    }
+
+    public Address() {
+
     }
 
     public String getCity() {

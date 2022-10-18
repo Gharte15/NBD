@@ -1,11 +1,25 @@
+package Entities;
+
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+
+@Entity
+@Access(AccessType.FIELD)
+@DiscriminatorValue("film")
 public class Film extends Item {
     private String duration;
-    private ageCategory category;
+    private AgeCategory category;
 
-    public Film(String creator, String releaseDate, String genre, double basePrice, String title, int id, String duration, ageCategory category) {
+    public Film(String creator, String releaseDate, String genre, double basePrice, String title, int id, String duration, AgeCategory category) {
         super(creator, releaseDate, genre, basePrice, title, id);
         this.duration = duration;
         this.category = category;
+    }
+
+    public Film() {
+
     }
 
     public String getDuration() {
@@ -16,11 +30,11 @@ public class Film extends Item {
         this.duration = duration;
     }
 
-    public ageCategory getCategory() {
+    public AgeCategory getCategory() {
         return category;
     }
 
-    public void setCategory(ageCategory category) {
+    public void setCategory(AgeCategory category) {
         this.category = category;
     }
 
@@ -32,6 +46,6 @@ public class Film extends Item {
 
     @Override
     public boolean isOnlyForAdults() {
-        return this.getCategory() == ageCategory.B;
+        return this.getCategory() == AgeCategory.B;
     }
 }

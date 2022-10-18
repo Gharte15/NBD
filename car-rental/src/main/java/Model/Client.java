@@ -1,14 +1,49 @@
-import jakarta.validation.Valid;
+package Entities;
 
+import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
+@Entity
 @Valid
+@Table(name="Entities.Client")
+@Access(AccessType.FIELD)
 public class Client {
+    @Id
+    @SequenceGenerator(initialValue = 10, name="clientIdSequence")
+    @GeneratedValue(generator = "clientIdSeqence")
+    private Long id;
+
+    @NotEmpty
     private String firstName;
+
+    @NotEmpty
     private String lastName;
+
     private String personalID;
     private int age;
     private boolean archive;
+
+    // @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @Embedded
+    @NotNull
     private ClientType clientType;
+
+    // @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @Embedded
     private Address address;
+
+    public Client() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Client(String firstName, String lastName, String personalID, int age, ClientType clientType, Address address) {
         this.firstName = firstName;
@@ -77,7 +112,7 @@ public class Client {
 
     public String getClientInfo() {
         String result;
-        result = "Client: " + this.getFirstName() + " " + this.getLastName() + " " + this.getPersonalID();
+        result = "Entities.Client: " + this.getFirstName() + " " + this.getLastName() + " " + this.getPersonalID();
 
         if (this.address != null) {
             result += this.getAddress().getAddressInfo();

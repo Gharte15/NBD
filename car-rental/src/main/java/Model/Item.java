@@ -1,11 +1,24 @@
-public abstract class Item {
+package Entities;
+
+import jakarta.persistence.*;
+import org.dom4j.tree.AbstractEntity;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type")
+@Access(AccessType.FIELD)
+public abstract class Item extends AbstractEntity {
     protected String creator;
     protected String releaseDate;
     protected String genre;
     protected double basePrice;
     protected String title;
     protected boolean archive = false;
-    protected int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
     protected boolean rented = false;
 
 
@@ -16,6 +29,10 @@ public abstract class Item {
         this.basePrice = basePrice;
         this.title = title;
         this.id = id;
+    }
+
+    public Item() {
+
     }
 
     public String getCreator() {

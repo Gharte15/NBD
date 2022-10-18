@@ -6,7 +6,7 @@ public class ItemManager {
     }
 
     public Item registerMusic(String creator, String releaseDate, String genre, double basePrice, String title,
-                       int id, String album, String duration) {
+                              int id, String album, String duration) {
         Item i = getItem(id);
 
         if (i != null) {

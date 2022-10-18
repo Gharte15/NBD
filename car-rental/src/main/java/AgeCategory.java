@@ -1,4 +1,0 @@
-enum ageCategory {
-        A, B;
-}
-
