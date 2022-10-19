@@ -4,22 +4,16 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
   <persistence-unit name="default">
-      <class>Entities.Item</class>
-      <class>Repositories.ClientRepository</class>
-      <class>Repositories.ItemRepository</class>
-      <class>Repositories.RentRepository</class>
-      <class>Managers.ClientManager</class>
-      <class>Managers.ItemManager</class>
-      <class>Managers.RentManager</class>
-      <class>Entities.Address</class>
-      <class>Entities.Film</class>
-      <class>Entities.Game</class>
-      <class>Entities.Music</class>
-      <class>Entities.Rent</class>
-      <class>Entities.Client</class>
-      <class>Entities.ClientType</class>
-      <class>Entities.Normal</class>
-      <class>Entities.Premium</class>
+      <class>Model.Item</class>
+      <class>Model.Address</class>
+      <class>Model.Film</class>
+      <class>Model.Game</class>
+      <class>Model.Music</class>
+      <class>Model.Rent</class>
+      <class>Model.Client</class>
+      <class>Model.ClientType</class>
+      <class>Model.Normal</class>
+      <class>Model.Premium</class>
       <exclude-unlisted-classes>true</exclude-unlisted-classes>
       <shared-cache-mode>NONE</shared-cache-mode>
       <validation-mode>CALLBACK</validation-mode>
@@ -32,6 +26,19 @@
       </properties>
   </persistence-unit>
   <persistence-unit name="POSTGRES_RENT_PU" transaction-type="RESOURCE_LOCAL">
+      <class>Model.Item</class>
+      <class>Model.Address</class>
+      <class>Model.Film</class>
+      <class>Model.Game</class>
+      <class>Model.Music</class>
+      <class>Model.Rent</class>
+      <class>Model.Client</class>
+      <class>Model.ClientType</class>
+      <class>Model.Normal</class>
+      <class>Model.Premium</class>
+      <exclude-unlisted-classes>true</exclude-unlisted-classes>
+      <shared-cache-mode>NONE</shared-cache-mode>
+      <validation-mode>CALLBACK</validation-mode>
       <properties>
           <property name="jakarta.persistence.jdbc.driver " value="org.postgresql.Driver"/>
           <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/nbddb"/>

@@ -1,4 +1,4 @@
-package Entities;
+package Model;
 
 import jakarta.persistence.Access;
 import jakarta.persistence.AccessType;

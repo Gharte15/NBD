@@ -3,10 +3,10 @@ package Repositories;
 import Model.Rent;
 import jakarta.persistence.EntityManager;
 
-public class RentRepository {
+public class RentRepositoryImpl {
     private EntityManager em;
 
-    public RentRepository(EntityManager em) {
+    public RentRepositoryImpl(EntityManager em) {
         this.em = em;
     }
 

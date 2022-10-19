@@ -1,4 +1,4 @@
-package Entities;
+package Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Valid
-@Table(name="Entities.Client")
+@Table(name="Client")
 @Access(AccessType.FIELD)
 public class Client {
     @Id
@@ -25,14 +25,21 @@ public class Client {
     private int age;
     private boolean archive;
 
-    // @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @Embedded
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @NotNull
     private ClientType clientType;
 
-    // @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @Embedded
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Address address;
+
+    public Client(String firstName, String lastName, String personalID, int age, ClientType clientType, Address address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.personalID = personalID;
+        this.age = age;
+        this.clientType = clientType;
+        this.address = address;
+    }
 
     public Client() {
     }
@@ -43,15 +50,6 @@ public class Client {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Client(String firstName, String lastName, String personalID, int age, ClientType clientType, Address address) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.personalID = personalID;
-        this.age = age;
-        this.clientType = clientType;
-        this.address = address;
     }
 
     public String getFirstName() {

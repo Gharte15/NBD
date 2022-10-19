@@ -1,9 +1,8 @@
-package Entities;
+package Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.dom4j.tree.AbstractEntity;
-
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -12,7 +11,7 @@ import java.time.LocalDateTime;
 public class Rent extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long rentID;
+    private Long id;
 
     @ManyToOne
     @JoinColumn
@@ -24,28 +23,27 @@ public class Rent extends AbstractEntity {
     @NotNull
     private Item item;
 
-    private int id;
     private double rentCost = 0;
     private LocalDateTime beginTime;
     private LocalDateTime endTime;
 
-    public Rent() {
-    }
-
-    public Long getRentID() {
-        return rentID;
-    }
-
-    public void setRentID(Long rentID) {
-        this.rentID = rentID;
-    }
-
-    public Rent(Client client, Item item, int id) {
+    public Rent(Client client, Item item, Long id) {
         this.client = client;
         this.item = item;
         this.id = id;
         this.beginTime = LocalDateTime.now();
         this.item.setRented(true);
+    }
+
+    public Rent() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long rentID) {
+        this.id = rentID;
     }
 
     public Client getClient() {
@@ -62,14 +60,6 @@ public class Rent extends AbstractEntity {
 
     public void setItem(Item item) {
         this.item = item;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public double getRentCost() {

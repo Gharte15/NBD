@@ -1,4 +1,4 @@
-package Entities;
+package Model;
 
 import jakarta.persistence.*;
 
@@ -9,14 +9,13 @@ public class Music extends Item {
     private String album;
     private String duration;
 
-    public Music(String creator, String releaseDate, String genre, double basePrice, String title, int id, String album, String duration) {
-        super(creator, releaseDate, genre, basePrice, title, id);
+    public Music(String creator, String releaseDate, String genre, double basePrice, String title, String album, String duration) {
+        super(creator, releaseDate, genre, basePrice, title);
         this.album = album;
         this.duration = duration;
     }
 
     public Music() {
-
     }
 
     public String getAlbum() {

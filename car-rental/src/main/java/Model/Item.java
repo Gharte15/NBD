@@ -1,38 +1,42 @@
-package Entities;
+package Model;
 
 import jakarta.persistence.*;
 import org.dom4j.tree.AbstractEntity;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "type")
+@Inheritance(strategy = InheritanceType.JOINED)
+// @DiscriminatorColumn(name = "type")
 @Access(AccessType.FIELD)
 public abstract class Item extends AbstractEntity {
-    protected String creator;
-    protected String releaseDate;
-    protected String genre;
-    protected double basePrice;
-    protected String title;
-    protected boolean archive = false;
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @Column(name = "id", nullable = false)
+    private Long id;
 
-    protected boolean rented = false;
+    private String creator;
+    private String releaseDate;
+    private String genre;
+    private double basePrice;
+    private String title;
+    private boolean archive = false;
+    private boolean rented = false;
 
-
-    public Item(String creator, String releaseDate, String genre, double basePrice, String title, int id) {
+    public Item(String creator, String releaseDate, String genre, double basePrice, String title) {
         this.creator = creator;
         this.releaseDate = releaseDate;
         this.genre = genre;
         this.basePrice = basePrice;
         this.title = title;
-        this.id = id;
     }
 
     public Item() {
+    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long itemID) {
+        this.id = itemID;
     }
 
     public String getCreator() {
@@ -81,14 +85,6 @@ public abstract class Item extends AbstractEntity {
 
     public void setArchive(boolean archive) {
         this.archive = archive;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public boolean isRented() {

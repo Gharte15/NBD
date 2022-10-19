@@ -1,9 +1,8 @@
-package Entities;
+package Model;
 
 import jakarta.persistence.*;
 
-// @Entity
-@Embeddable
+@Entity
 @Access(AccessType.FIELD)
 public abstract class ClientType {
     @Id

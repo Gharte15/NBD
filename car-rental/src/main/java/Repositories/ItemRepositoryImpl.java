@@ -2,11 +2,12 @@ package Repositories;
 
 import Model.Item;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.LockModeType;
 
-public class ItemRepository {
+public class ItemRepositoryImpl implements ItemRepository {
     private EntityManager em;
 
-    public ItemRepository(EntityManager em) {
+    public ItemRepositoryImpl(EntityManager em) {
         this.em = em;
     }
 

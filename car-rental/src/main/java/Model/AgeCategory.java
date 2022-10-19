@@ -1,4 +1,4 @@
-package Entities;
+package Model;
 
 public enum AgeCategory {
         A, B;

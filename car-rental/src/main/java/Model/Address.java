@@ -1,14 +1,14 @@
-package Entities;
+package Model;
 
-import jakarta.persistence.Access;
-import jakarta.persistence.AccessType;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
-// @Entity
-@Embeddable
+@Entity
 @Access(AccessType.FIELD)
 public class Address {
+    @Id
+    @Column(name = "id", nullable = false)
+    private Long id;
+
     private String city;
     private String street;
     private String number;
@@ -20,7 +20,14 @@ public class Address {
     }
 
     public Address() {
+    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCity() {

@@ -1,4 +1,4 @@
-package Entities;
+package Model;
 
 import jakarta.persistence.Access;
 import jakarta.persistence.AccessType;
@@ -12,14 +12,13 @@ public class Film extends Item {
     private String duration;
     private AgeCategory category;
 
-    public Film(String creator, String releaseDate, String genre, double basePrice, String title, int id, String duration, AgeCategory category) {
-        super(creator, releaseDate, genre, basePrice, title, id);
+    public Film(String creator, String releaseDate, String genre, double basePrice, String title, String duration, AgeCategory category) {
+        super(creator, releaseDate, genre, basePrice, title);
         this.duration = duration;
         this.category = category;
     }
 
     public Film() {
-
     }
 
     public String getDuration() {
