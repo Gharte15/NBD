@@ -3,14 +3,21 @@ package Model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "Address")
 @Access(AccessType.FIELD)
 public class Address {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "city")
     private String city;
+
+    @Column(name = "street")
     private String street;
+
+    @Column(name = "number")
     private String number;
 
     public Address(String city, String street, String number) {

@@ -16,19 +16,24 @@ public class ItemRepositoryImpl implements ItemRepository {
     }
 
     public Item addItem(Item i) {
+        em.getTransaction().begin();
         if (i.getId() == null) {
             em.persist(i);
         } else {
             em.merge(i);
         }
+        em.getTransaction().commit();
         return i;
     }
 
     public void deleteItem(Item i) {
+        em.getTransaction().begin();
         if (em.contains(i)) {
             em.remove(i);
         } else {
             em.merge(i);
         }
+        em.getTransaction().commit();
+
     }
 }

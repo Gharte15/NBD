@@ -7,32 +7,38 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Access(AccessType.FIELD)
+@Table(name="Rent")
 @Entity
 public class Rent extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn
     @NotNull
     private Client client;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn
     @NotNull
     private Item item;
 
+    @Column(name = "rent_cost")
     private double rentCost = 0;
+
+    @Column(name = "begin_time")
     private LocalDateTime beginTime;
+
+    @Column(name = "end_time")
     private LocalDateTime endTime;
 
-    public Rent(Client client, Item item, Long id) {
+    public Rent(Client client, Item item) {
         this.client = client;
         this.item = item;
-        this.id = id;
         this.beginTime = LocalDateTime.now();
         this.item.setRented(true);
+        client.setCurrentRents(client.getCurrentRents() + 1);
     }
 
     public Rent() {

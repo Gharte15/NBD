@@ -5,7 +5,7 @@ import javax.annotation.Generated;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(Premium.class)
-public abstract class Premium_ extends Model.ClientType_ {
+public abstract class Premium_ {
 
 
 

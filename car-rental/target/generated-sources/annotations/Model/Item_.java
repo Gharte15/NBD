@@ -6,7 +6,7 @@ import javax.annotation.Generated;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(Item.class)
-public abstract class Item_ {
+public abstract class Item_ extends Model.AbstractEntity_ {
 
 	public static volatile SingularAttribute<Item, String> creator;
 	public static volatile SingularAttribute<Item, Boolean> rented;
@@ -15,7 +15,7 @@ public abstract class Item_ {
 	public static volatile SingularAttribute<Item, Boolean> archive;
 	public static volatile SingularAttribute<Item, Long> id;
 	public static volatile SingularAttribute<Item, String> title;
-	public static volatile SingularAttribute<Item, Integer> version;
+	public static volatile SingularAttribute<Item, Long> version;
 	public static volatile SingularAttribute<Item, Double> basePrice;
 
 	public static final String CREATOR = "creator";

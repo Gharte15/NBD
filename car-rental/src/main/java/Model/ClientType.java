@@ -2,7 +2,6 @@ package Model;
 
 import jakarta.persistence.*;
 
-@Entity
 @Access(AccessType.FIELD)
 public abstract class ClientType {
     @Id
@@ -12,7 +11,6 @@ public abstract class ClientType {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -20,4 +18,9 @@ public abstract class ClientType {
     abstract int getMaxItems();
     abstract double applyDiscount(double price);
     abstract String getTypeInfo();
+
+    @Override
+    public String toString() {
+        return null;
+    }
 }

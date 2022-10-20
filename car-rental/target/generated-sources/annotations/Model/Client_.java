@@ -11,7 +11,6 @@ public abstract class Client_ {
 	public static volatile SingularAttribute<Client, String> firstName;
 	public static volatile SingularAttribute<Client, String> lastName;
 	public static volatile SingularAttribute<Client, String> personalID;
-	public static volatile SingularAttribute<Client, ClientType> clientType;
 	public static volatile SingularAttribute<Client, Address> address;
 	public static volatile SingularAttribute<Client, Boolean> archive;
 	public static volatile SingularAttribute<Client, Long> id;
@@ -21,7 +20,6 @@ public abstract class Client_ {
 	public static final String FIRST_NAME = "firstName";
 	public static final String LAST_NAME = "lastName";
 	public static final String PERSONAL_ID = "personalID";
-	public static final String CLIENT_TYPE = "clientType";
 	public static final String ADDRESS = "address";
 	public static final String ARCHIVE = "archive";
 	public static final String ID = "id";

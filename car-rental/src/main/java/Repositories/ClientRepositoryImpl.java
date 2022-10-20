@@ -16,25 +16,32 @@ public class ClientRepositoryImpl implements ClientRepository {
     }
 
     public Client getClientByPersonalId(String personalId) {
+        em.getTransaction().begin();
         TypedQuery<Client> q = em.createQuery("SELECT c FROM Client c WHERE c.personalID = : personalId", Client.class);
         q.setParameter("personalId", personalId);
+        em.getTransaction().commit();
         return q.getSingleResult();
     }
 
     public Client addClient(Client c) {
+        em.getTransaction().begin();
         if (c.getId() == null) {
             em.persist(c);
         } else {
             em.merge(c);
         }
+        em.getTransaction().commit();
+
         return c;
     }
 
     public void deleteClient(Client c) {
+        em.getTransaction().begin();
         if (em.contains(c)) {
             em.remove(c);
         } else {
             em.merge(c);
         }
+        em.getTransaction().commit();
     }
 }

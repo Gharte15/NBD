@@ -21,4 +21,9 @@ public class Premium extends ClientType {
     String getTypeInfo() {
         return "Typ klienta: premium\n";
     }
+
+    @Override
+    public String toString() {
+        return "Premium";
+    }
 }

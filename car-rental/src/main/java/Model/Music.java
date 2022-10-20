@@ -4,9 +4,11 @@ import jakarta.persistence.*;
 
 @Entity
 @Access(AccessType.FIELD)
-@DiscriminatorValue("music")
 public class Music extends Item {
+    @Column(name = "album")
     private String album;
+
+    @Column(name = "duration")
     private String duration;
 
     public Music(String creator, String releaseDate, String genre, double basePrice, String title, String album, String duration) {

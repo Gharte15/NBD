@@ -1,7 +1,9 @@
 package Repositories;
 
+import Model.Client;
 import Model.Rent;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.LockModeType;
 
 public class RentRepositoryImpl {
     private EntityManager em;
@@ -15,11 +17,25 @@ public class RentRepositoryImpl {
     }
 
     public Rent addRent(Rent r) {
+        em.getTransaction().begin();
         if (r.getId() == null) {
             em.persist(r);
         } else {
             em.merge(r);
         }
+        em.getTransaction().commit();
         return r;
+
+    }
+
+    public void deleteRent(Rent r) {
+        em.getTransaction().begin();
+        if (em.contains(r)) {
+            em.remove(r);
+        } else {
+            em.merge(r);
+        }
+        r.getItem().setRented(false);
+        em.getTransaction().commit();
     }
 }

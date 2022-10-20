@@ -16,21 +16,39 @@ public class Client {
     private Long id;
 
     @NotEmpty
+    @Column(name = "first_name")
     private String firstName;
 
+    @Column(name = "last_name")
     @NotEmpty
     private String lastName;
 
+    @Column(name = "personal_Id")
     private String personalID;
+
+    @Column(name = "age")
     private int age;
+
+    @Column(name = "archive")
     private boolean archive;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @Column(name = "current_rents_amount")
+    private int currentRents;
+
+    @Convert(converter = ClientTypeConverter.class)
     @NotNull
     private ClientType clientType;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Address address;
+
+    public int getCurrentRents() {
+        return currentRents;
+    }
+
+    public void setCurrentRents(int currentRents) {
+        this.currentRents = currentRents;
+    }
 
     public Client(String firstName, String lastName, String personalID, int age, ClientType clientType, Address address) {
         this.firstName = firstName;
@@ -39,6 +57,7 @@ public class Client {
         this.age = age;
         this.clientType = clientType;
         this.address = address;
+        this.currentRents = 0;
     }
 
     public Client() {

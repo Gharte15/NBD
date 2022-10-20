@@ -21,4 +21,9 @@ public class Normal extends ClientType {
     String getTypeInfo() {
         return "Typ klienta: zwykly\n";
     }
+
+    @Override
+    public String toString() {
+        return "Normal";
+    }
 }

@@ -1,23 +1,37 @@
 package Model;
 
 import jakarta.persistence.*;
-import org.dom4j.tree.AbstractEntity;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-// @DiscriminatorColumn(name = "type")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Access(AccessType.FIELD)
 public abstract class Item extends AbstractEntity {
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Version
+    private long version;
+
+    @Column(name = "creator")
     private String creator;
+
+    @Column(name = "release_date")
     private String releaseDate;
+
+    @Column(name = "genre")
     private String genre;
+
+    @Column(name = "base_price")
     private double basePrice;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "archive")
     private boolean archive = false;
+
+    @Column(name = "rented")
     private boolean rented = false;
 
     public Item(String creator, String releaseDate, String genre, double basePrice, String title) {
@@ -105,9 +119,11 @@ public abstract class Item extends AbstractEntity {
 
         return result;
     }
+
     public double getActualRentalPrice() {
         return basePrice;
     }
+
     public abstract boolean isOnlyForAdults();
 
 }

@@ -1,6 +1,7 @@
 package Repositories;
 
 import Model.*;
+import Managers.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -19,13 +20,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 class DBTest {
     private static EntityManagerFactory emf;
     private static EntityManager em;
-    private static ClientRepository cr;
+    // private static ClientRepository cr;
+    private static RentManager rm;
 
     @BeforeAll
     static void beforeAll() {
         emf = Persistence.createEntityManagerFactory("POSTGRES_RENT_PU");
         em = emf.createEntityManager();
-        cr = new ClientRepositoryImpl(em);
+        rm = new RentManager(em);
     }
 
     @AfterAll

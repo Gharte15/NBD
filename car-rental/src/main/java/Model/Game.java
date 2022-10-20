@@ -1,15 +1,15 @@
 package Model;
 
-import jakarta.persistence.Access;
-import jakarta.persistence.AccessType;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
 @Access(AccessType.FIELD)
 @DiscriminatorValue("game")
 public class Game extends Item {
+    @Column(name = "platform")
     private String platform;
+
+    @Column(name = "category")
     private AgeCategory category;
 
     public Game(String creator, String releaseDate, String genre, double basePrice, String title, String platform, AgeCategory category) {
